@@ -21,7 +21,6 @@ class Ui_MainWindow(object):
         self.logo = QtWidgets.QLabel(self.centralwidget)
         self.logo.setGeometry(QtCore.QRect(QtCore.QRect(730, 0, 70, 70)))
         self.logo.setText("")
-        # self.photo.setPixmap(QtGui.QPixmap("Qlogo-White.png"))
         self.logo.setPixmap(QtGui.QPixmap("Qlogo-White.png"))
         self.logo.setScaledContents(True)
         self.logo.setObjectName("logo")
