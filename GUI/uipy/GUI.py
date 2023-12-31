@@ -34,7 +34,6 @@ class Ui_MainWindow(object):
         # self.camera_img.setObjectName("camera_img")
 
 
-
         self.groupBox = QtWidgets.QGroupBox(self.centralwidget)
         self.groupBox.setGeometry(QtCore.QRect(10, 260, 271, 211))
         self.groupBox.setObjectName("groupBox")
