@@ -26,6 +26,7 @@ class Ui_MainWindow(object):
         self.logo.setObjectName("logo")
 
 
+
         # self.camera_img = QtWidgets.QLabel(self.centralwidget)
         # self.camera_img.setGeometry(QtCore.QRect(QtCore.QRect(730, 70, 70, 70)))
         # self.camera_img.setText("")
