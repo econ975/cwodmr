@@ -86,6 +86,20 @@ class Ui_MainWindow(object):
         self.y_roiLineEdit.setObjectName("y_roilLineEdit")
         self.formLayout.setWidget(7, QtWidgets.QFormLayout.FieldRole, self.y_roiLineEdit)
 
+        self.roi_width = QtWidgets.QLabel(self.formLayoutWidget)
+        self.roi_width.setObjectName("roi_width")
+        self.formLayout.setWidget(8, QtWidgets.QFormLayout.LabelRole, self.roi_width)
+        self.roi_widthEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
+        self.roi_widthEdit.setObjectName("roi_widthEdit")
+        self.formLayout.setWidget(8, QtWidgets.QFormLayout.FieldRole, self.roi_widthEdit)
+
+        self.roi_height = QtWidgets.QLabel(self.formLayoutWidget)
+        self.roi_height.setObjectName("roi_height")
+        self.formLayout.setWidget(9, QtWidgets.QFormLayout.LabelRole, self.roi_height)
+        self.roi_heightEdit = QtWidgets.QLineEdit(self.formLayoutWidget)
+        self.roi_heightEdit.setObjectName("roi_heightEdit")
+        self.formLayout.setWidget(9, QtWidgets.QFormLayout.FieldRole, self.roi_heightEdit)
+
         self.numOfAvgsLabel = QtWidgets.QLabel(self.formLayoutWidget)
         self.numOfAvgsLabel.setObjectName("numOfAvgsLabel")
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.LabelRole, self.numOfAvgsLabel)
@@ -161,6 +175,9 @@ class Ui_MainWindow(object):
         self.dwellTimeMsLabel.setText(_translate("MainWindow", "Exposure Time (ms)"))
         self.x_roiLabel.setText(_translate("MainWindow", "x_roi"))
         self.y_roiLabel.setText(_translate("MainWindow", "y_roi"))
+        self.roi_width.setText(_translate("MainWindow", "roi_width"))
+        self.roi_height.setText(_translate("MainWindow", "roi_height"))
+
         # self.numOfAvgsLabel.setText(_translate("MainWindow", "Num of Avgs"))
         self.numOfAvgsLabel.setText(_translate("MainWindow", "Gain"))
         self.powerDBLabel.setText(_translate("MainWindow", "Power (dBm)"))

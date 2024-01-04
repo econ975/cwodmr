@@ -52,7 +52,9 @@ class mainGUI(QtWidgets.QMainWindow):
                'NumOfAvgs': self.ui.numOfAvgsLineEdit,
                'Power': self.ui.powerLineEdit,
                'x_roi': self.ui.x_roiLineEdit,
-               'y_roi': self.ui.y_roiLineEdit
+               'y_roi': self.ui.y_roiLineEdit,
+               'roi_width': self.ui.roi_widthEdit,
+               'roi_height': self.ui.roi_heightEdit
                }
         for key, value in d.items():
             dic.get(key).setText(value)
@@ -67,6 +69,8 @@ class mainGUI(QtWidgets.QMainWindow):
         pairList.append(('Power', self.ui.powerLineEdit.text()))
         pairList.append(('x_roi', self.ui.x_roiLineEdit.text()))
         pairList.append(('y_roi', self.ui.y_roiLineEdit.text()))
+        pairList.append(('roi_width', self.ui.roi_widthEdit.text()))
+        pairList.append(('roi_height', self.ui.roi_heightEdit.text()))
         ofile = open(os.path.join(os.path.dirname(__file__), fName), 'w')
         for pair in pairList:
             ofile.write(pair[0] + "=" + pair[1] + "\n")
@@ -98,7 +102,9 @@ class mainGUI(QtWidgets.QMainWindow):
                            'Gains': eval(self.ui.numOfAvgsLineEdit.text()),
                            'Power': eval(self.ui.powerLineEdit.text()),
                            'x_roi': eval(self.ui.x_roiLineEdit.text()),
-                           'y_roi': eval(self.ui.y_roiLineEdit.text())
+                           'y_roi': eval(self.ui.y_roiLineEdit.text()),
+                           'roi_width': eval(self.ui.roi_widthEdit.text()),
+                           'roi_height': eval(self.ui.roi_heightEdit.text())
                            }
         self.sThread.parameters = self.parameters
         self.x_arr = np.linspace(self.parameters['StartFreq'], self.parameters['StopFreq'],

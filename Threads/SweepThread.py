@@ -29,10 +29,9 @@ class SweepThread(QtCore.QThread):
                            }
 
     def run(self):
-        plt.ion()
-        fig1 = plt.figure('frame')
         self.running = True
-
+        fig = plt.figure()
+        # fig, axs = plt.subplots(2)
         self.start_freq = float(self.parameters['StartFreq']) * 1000.0
         self.stop_freq = float(self.parameters['StopFreq']) * 1000.0
         self.num_of_step = int(self.parameters['NumOfSteps'])
@@ -41,6 +40,8 @@ class SweepThread(QtCore.QThread):
         self.power = float(self.parameters['Power'])
         self.x_roi = int(self.parameters['x_roi'])
         self.y_roi = int(self.parameters['y_roi'])
+        self.roi_width = int(self.parameters['roi_width'])
+        self.roi_height = int(self.parameters['roi_height'])
         x_roi = self.x_roi
         y_roi = self.y_roi
         self._hardware.MW_source.set_power(power=self.power)
@@ -49,7 +50,8 @@ class SweepThread(QtCore.QThread):
         self._hardware.camera.frames_per_trigger_zero_for_unlimited = 0  # start camera in continuous mode
         self._hardware.camera.image_poll_timeout_ms = 1000
         old_roi = self._hardware.camera.roi
-        self._hardware.camera.roi = (x_roi - 50, y_roi - 50, x_roi + 50, y_roi + 50)
+        self._hardware.camera.roi = (x_roi - self.roi_width//2, y_roi - self.roi_height//2, x_roi + self.roi_width//2, y_roi + self.roi_height//2)
+        # self._hardware.camera.roi = (x_roi - 50, y_roi - 50, x_roi + 50, y_roi + 50)
         print(self._hardware.camera.image_width_pixels,
               self._hardware.camera.image_height_pixels)  # The area of ROI must be at least 80*4, and in the scale of 4*4 (e.g. roi: 101*5 pixels = 104*8)
         if self._hardware.camera.gain_range.max > 0:  # set gain
@@ -90,9 +92,14 @@ class SweepThread(QtCore.QThread):
                             img = img.convert('L')
                             img.save("new.png")
 
+
+                            plt.title('image')
                             plt.imshow(img, cmap='gray')
                             plt.pause(0.1)
-                            fig1.clf()
+                            # x = image_buffer_copy[60]
+                            # y = np.arange(720)
+                            # axs[0].plot(x, y)
+                            fig.clf()
 
                             # plt.imshow(gray_image, cmap='gray')
                             # plt.show()
